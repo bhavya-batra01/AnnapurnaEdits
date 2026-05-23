@@ -1,0 +1,110 @@
+ body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(
+                    rgba(63, 62, 20, 0.85),
+                    rgba(63, 62, 20, 0.85)
+                ),
+                url("images/texture-bg.jpg"); /* optional grain texture */
+            background-size: cover;
+            color: var(--cream);
+        }
+
+h2{
+    color:#f9f7eb;
+    font-family: spoof;
+}
+div{
+    color:white;
+    align-items: center;
+    width:40%;
+    height:60%;
+    margin-left: 70px;
+}
+h1{
+    font-size: 100px ;
+}
+h3{
+    font-size: 34px;
+}
+ul{
+    width:50%;
+    list-style: none;
+    display: flex;
+    color:#f9f7eb;
+    width:1;
+}
+li{
+    margin-top: 15px;
+    margin-left: 50px;;
+}
+header{
+    display:flex;
+}
+button{
+    border:1px solid #dfd3a4 ;
+    border-radius: 10px;
+    color:#dfd3a4;
+    margin-left: 200px ;
+    font-size: 20px;
+    margin-top:35px
+}
+main{
+    display: flex;
+}
+img{
+    width:100%;
+}
+button:hover{
+    font-size: 22px;
+     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+     transition: ease-in 0.1s;
+    
+
+}
+a{
+    text-decoration: none;
+    color:#f9f7eb;
+}
+
+
+/* ================= HEADER ================= */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 60px;
+}
+
+header h2 {
+  font-weight: 1000;
+  font-size: 50px;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+  gap: 40px;
+}
+
+a {
+  color: WHITE;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 20px;
+  position: relative;
+}
+
+a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  left: 0;
+  bottom: -4px;
+  background-color: white;
+  transition: 0.3s;
+}
+
+a:hover::after {
+  width: 100%;
+}

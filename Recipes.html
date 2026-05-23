@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Recipes | Annapurna Edits</title>
+<link rel="stylesheet" href="second.css">
+</head>
+<body>
+
+<header>
+  <h2>Annapurna Edits</h2>
+  <ul>
+    <li><a href="home.html">Home</a></li>
+    <li><a href="recipes.html" class="active">Recipes</a></li>
+    <li><a href="tips.html">Tips</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><span id="currentUserDisplay"></span></li>
+    <li><button id="loginBtn" onclick="window.location.href='login.html'">Login</button></li>
+    <li><button id="logoutBtn" onclick="adminLogout()">Logout</button></li>
+    <li><button id="addRecipeBtn" onclick="showAddModal()">+ Add Recipe</button></li>
+  </ul>
+</header>
+
+<main>
+  <div id="categories">
+    <h2>IN MY</h2>
+    <h1>Kitchen</h1>
+    <ul>
+      <li onclick="filterCategory('Breakfast')">🍳 Breakfast</li>
+      <li onclick="filterCategory('Baking')">🥐 Baking</li>
+      <li onclick="filterCategory('Cocktails')">🍹 Cocktails</li>
+      <li onclick="filterCategory('Dinner')">🍽️ Dinners</li>
+      <li onclick="filterCategory('Pasta')">🍝 Pasta</li>
+      <li onclick="filterCategory('Wines')">🍷 Wines</li>
+    </ul>
+  </div>
+
+  <div class="season">
+    <h2>IN</h2>
+    <h1>Season</h1>
+    <ul>
+      <li onclick="filterSeason('Summer')">Summer</li>
+      <li onclick="filterSeason('Winter')">Winter</li>
+      <li onclick="filterSeason('All')">All Rounders</li>
+    </ul>
+  </div>
+</main>
+
+
+<section class="choice">
+  <h1>🔥 Most Loved Recipes</h1>
+  <hr>
+  <div class="items" id="mostLiked"></div>
+</section>
+<div class="search-bar">
+  <input type="text" id="searchInput" placeholder="Search recipes..." onkeyup="searchRecipes()">
+</div>
+
+<section class="choice">
+  <h1>Choose Your Flavour</h1>
+  <hr>
+  <div class="items" id="recipeList"></div>
+  <p id="noResults" style="display:none;">No recipes found!</p>
+</section>
+
+<!-- VIEW RECIPE -->
+<div id="recipeModal" class="modal">
+  <div class="modal-content">
+
+    <span class="close" onclick="closeRecipe()">&times;</span>
+
+    <h2 id="rTitle"></h2>
+
+    <!-- IMAGE + ACTIONS -->
+    <div class="recipe-top">
+      <img id="rImg">
+
+      <div class="recipe-actions">
+        <button class="like-btn" onclick="likeRecipe()">
+          ❤️ <span id="likeCount"></span>
+        </button>
+
+        <button class="comment-btn" onclick="scrollToComments()">
+          💬 <span id="commentCount"></span>
+        </button>
+      </div>
+    </div>
+
+    <h4>Ingredients</h4>
+    <ul id="rIngredients" class="ingredients-grid"></ul>
+
+    <h4>Preparation</h4>
+    <ol id="rSteps"></ol>
+
+    <h4 id="commentsSection">Comments</h4>
+    <ul id="rComments"></ul>
+
+    <input type="text" id="commentInput" placeholder="Add a comment">
+    <button onclick="addComment()" class="primary-btn">Comment</button>
+
+    <button id="editBtn" class="primary-btn" onclick="editRecipe()" style="display:none">Edit</button>
+    <button id="deleteBtn" class="danger-btn" onclick="deleteRecipe()" style="display:none">Delete</button>
+
+  </div>
+</div>
+
+
+<!-- ADD/EDIT RECIPE -->
+<div id="addModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeAdd()">&times;</span>
+    <h2 id="addTitle">Add Recipe</h2>
+    <input id="name" placeholder="Recipe name">
+    <select id="category">
+      <option value="">Select Category</option>
+      <option>Breakfast</option>
+      <option>Baking</option>
+      <option>Cocktails</option>
+      <option>Dinner</option>
+      <option>Pasta</option>
+      <option>Wines</option>
+    </select>
+    <select id="season">
+      <option value="">Select Season</option>
+      <option>Summer</option>
+      <option>Winter</option>
+      <option>All</option>
+    </select>
+    <input type="file" id="image" accept="image/*" onchange="previewImage(event)">
+    <img id="preview" style="display:none;max-width:100%;margin:10px 0;border-radius:10px;">
+    <textarea id="ingredients" placeholder="Ingredients (comma separated)"></textarea>
+    <textarea id="steps" placeholder="Steps (comma separated)"></textarea>
+    <button class="primary-btn" onclick="saveRecipe()">Save</button>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
